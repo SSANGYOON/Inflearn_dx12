@@ -8,13 +8,13 @@
 #include "Shader.h"
 #include "ConstantBuffer.h"
 #include "TableDescriptorHeap.h"
+#include "Texture.h"
 
 class Engine
 {
 public:
 
 	void Init(const WindowInfo& info);
-	void Render();
 
 public:
 	shared_ptr<Device> GetDevice() { return _device; }
