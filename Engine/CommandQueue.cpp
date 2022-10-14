@@ -20,15 +20,7 @@ void CommandQueue::Init(ComPtr<ID3D12Device> device, shared_ptr<SwapChain> swapC
 
 	// - D3D12_COMMAND_LIST_TYPE_DIRECT : GPU가 직접 실행하는 명령 목록
 	device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&_cmdAlloc));
-
-	// GPU가 하나인 시스템에서는 0으로
-	// DIRECT
-	// Allocator
-	// 초기 상태 (그리기 명령은 nullptr 지정)
 	device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, _cmdAlloc.Get(), nullptr, IID_PPV_ARGS(&_cmdList));
-
-	// CommandList는 Close / Open 상태가 있는데
-	// Open 상태에서 Command를 넣다가 Close한 다음 제출하는 개념
 	_cmdList->Close();
 
 	device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&_resCmdAlloc));
@@ -68,31 +60,40 @@ void CommandQueue::RenderBegin(const D3D12_VIEWPORT* vp, const D3D12_RECT* rect)
 	_cmdList->Reset(_cmdAlloc.Get(), nullptr);
 
 	D3D12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
-		_swapChain->GetCurrentBackBufferResource().Get(),
+		_swapChain->GetBackRTVBuffer().Get(),
 		D3D12_RESOURCE_STATE_PRESENT, // 화면 출력
 		D3D12_RESOURCE_STATE_RENDER_TARGET); // 외주 결과물
 
-	_cmdList->ResourceBarrier(1, &barrier);
+
 	_cmdList->SetGraphicsRootSignature(ROOT_SIGNATURE.Get());
-	GEngine->GetCB()->Clear();
+
+	GEngine->GetConstantBuffer(CONSTANT_BUFFER_TYPE::TRANSFORM)->Clear();
+	GEngine->GetConstantBuffer(CONSTANT_BUFFER_TYPE::MATERIAL)->Clear();
+
 	GEngine->GetTableDescHeap()->Clear();
 
 	ID3D12DescriptorHeap* descHeap = GEngine->GetTableDescHeap()->GetDescriptorHeap().Get();
 	_cmdList->SetDescriptorHeaps(1, &descHeap);
+
+	_cmdList->ResourceBarrier(1, &barrier);
 	// Set the viewport and scissor rect.  This needs to be reset whenever the command list is reset.
 	_cmdList->RSSetViewports(1, vp);
 	_cmdList->RSSetScissorRects(1, rect);
 
 	// Specify the buffers we are going to render to.
-	D3D12_CPU_DESCRIPTOR_HANDLE backBufferView = _swapChain->GetBackBufferView();
+	D3D12_CPU_DESCRIPTOR_HANDLE backBufferView = _swapChain->GetBackRTV();
 	_cmdList->ClearRenderTargetView(backBufferView, Colors::LightSteelBlue, 0, nullptr);
-	_cmdList->OMSetRenderTargets(1, &backBufferView, FALSE, nullptr);
+
+	D3D12_CPU_DESCRIPTOR_HANDLE depthStencilView = GEngine->GetDepthStencilBuffer()->GetDSVCpuHandle();
+	_cmdList->OMSetRenderTargets(1, &backBufferView, FALSE, &depthStencilView);
+
+	_cmdList->ClearDepthStencilView(depthStencilView, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 }
 
 void CommandQueue::RenderEnd()
 {
 	D3D12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
-		_swapChain->GetCurrentBackBufferResource().Get(),
+		_swapChain->GetBackRTVBuffer().Get(),
 		D3D12_RESOURCE_STATE_RENDER_TARGET, // 외주 결과물
 		D3D12_RESOURCE_STATE_PRESENT); // 화면 출력
 

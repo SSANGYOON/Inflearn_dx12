@@ -3,9 +3,7 @@
 class SwapChain;
 class DescriptorHeap;
 
-// 외주 일감 목록(?)
-// - 텅 비면 GPU가 논다
-// - 꽉 차면 CPU가 논다
+
 class CommandQueue
 {
 public:

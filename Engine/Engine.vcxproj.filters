@@ -51,7 +51,26 @@
     <ClInclude Include="TableDescriptorHeap.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Texture.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthStencilBuffer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MonoBehavior.h" />
+    <ClInclude Include="MeshRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -59,9 +78,6 @@
     </ClCompile>
     <ClCompile Include="EnginePch.cpp">
       <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="CommandQueue.cpp">
       <Filter>Engine</Filter>
@@ -87,7 +103,29 @@
     <ClCompile Include="TableDescriptorHeap.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthStencilBuffer.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="MonoBehavior.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Resources\Shader\default.hlsl">
