@@ -13,6 +13,9 @@
     <Filter Include="Resources\Shader">
       <UniqueIdentifier>{4fa44a48-b238-452c-bfc7-6539e1059c64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{d9cde650-3b86-4944-8f0b-f354cfed60df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -39,31 +42,13 @@
     <ClInclude Include="RootSignature.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="TableDescriptorHeap.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="DepthStencilBuffer.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h" />
@@ -71,6 +56,28 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MonoBehavior.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="Material.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -91,12 +98,6 @@
     <ClCompile Include="RootSignature.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="ConstantBuffer.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -106,19 +107,7 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="DepthStencilBuffer.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp" />
@@ -126,6 +115,28 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MonoBehavior.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="Material.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Resources\Shader\default.hlsl">
