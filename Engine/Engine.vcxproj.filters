@@ -51,7 +51,6 @@
     <ClInclude Include="DepthStencilBuffer.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MonoBehavior.h" />
@@ -78,6 +77,12 @@
     <ClInclude Include="Scene.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="SimpleMath.h" />
+    <ClInclude Include="TestCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -110,7 +115,6 @@
     <ClCompile Include="DepthStencilBuffer.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MonoBehavior.cpp" />
@@ -137,10 +141,19 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="SimpleMath.cpp" />
+    <ClCompile Include="TestCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Resources\Shader\default.hlsl">
       <Filter>Resources\Shader</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleMath.inl" />
   </ItemGroup>
 </Project>
